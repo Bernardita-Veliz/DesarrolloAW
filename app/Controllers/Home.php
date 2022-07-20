@@ -5,6 +5,7 @@ use App\Models\usuarioModel;
 use App\Models\InventarioModel;
 use App\Models\categoriaproducto;
 use App\Models\ProyectoModel;
+use App\Models\proyecto_guardado;
 use App\Models\Usuarios;
 use App\Models\producto_bodega;
 use App\Models\producto_guardado;
@@ -14,10 +15,15 @@ class Home extends BaseController
 {
     public function index()
     {
-        $mensaje = session('mensaje');
-        return view('login', ["mensaje" => $mensaje]);
-        
+        $Crud = new UsuarioModel();
+        $datos = $Crud->listadousuario();
 
+        $mensaje = session('mensaje');
+        $data = [
+            "datos" => $datos,
+            "mensaje"=> $mensaje
+        ];
+        return view('login', ["mensaje" => $mensaje]);
     }
 
     public function inicio(){
@@ -34,7 +40,7 @@ class Home extends BaseController
         return view('herramientas_inalambricas');
     }
 
-    
+
     public function proyectos(){
         return view('proyectos');
     }
@@ -45,7 +51,10 @@ class Home extends BaseController
         return view('agregar_producto');
 
     }
-    
+    public function materiales(){
+        return view('materiales');
+    }
+
     public function editar_producto(){
         return view('editar_producto');
     }
@@ -57,7 +66,7 @@ class Home extends BaseController
     }
 
 
-    
+
     public function store(){
         $pbodega = new producto_guardado();
         $data = [
@@ -67,9 +76,9 @@ class Home extends BaseController
             'cantidad'  => $this->request->getPost('cantidad'),
             'nombre_categorias'  => $this->request->getPost('nombre_categorias')
          ];
- 
+
         $pbodega->save($data);
- 
+
         return redirect()->to(base_url('/bodega'))->with('msg','Producto Guardado.');
     }
 
@@ -84,10 +93,11 @@ class Home extends BaseController
          ];
 
         $usuario->save($data);
- 
+
         return redirect()->to(base_url('visualizar_usuarios'))->with('msg','Usuario Guardado.');
-            
+
         }
+
     public function bodega(){
         $crud = new InventarioModel();
         $datos = $crud->listadoproducto();
@@ -108,16 +118,16 @@ class Home extends BaseController
         return view('/herramientas_inalambricas', $data);
     }
 
-    
+
     public function proyecto(){
-        $crud = new categoriaproducto();
+        $crud = new proyecto_guardado();
         $datos = $crud->listadoproyecto();
         $data = [
             "datos" => $datos
         ];
         return view('/proyectos', $data);
     }
-    
+
 
     public function visualizar_usuarios(){
         $crud = new usuarioModel();
@@ -145,13 +155,13 @@ class Home extends BaseController
             $session = session();
             $session->set($data);
 
-            return redirect()->to(base_url('/inicio'))->with('mensaje','1');
+            return redirect()->to(base_url().'/inicio')->with('mensaje','1');
         }else {
-            return redirect()->to(base_url('/'))->with('mensaje','0');
+            return redirect()->to(base_url().'/')->with('mensaje','0');
         }
     }
 
-    
+
     public function salir() {
         $session = session();
         $session->destroy();
@@ -178,41 +188,68 @@ class Home extends BaseController
         return redirect()->to('visualizar_usuarios');
     }
 
-    function guardar_producto(){
-        $producto = new producto_bodega();
-        $data = [
-            'nombre' => $this->request->getPost('nombre'),
-            'Código' => $this->request->getPost('Código'),
-            'descripcion' => $this->request->getPost('descripcion'),
-            'cantidad' => $this->request->getPost('cantidad')
-         ];
-        $producto->save($data);
- 
-        return redirect()->to(base_url('bodega'))->with('msg','Producto Guardado.');
-            
-        }
-        function guardar_proyecto(){
-            $proyecto = new producto_bodega();
-            $data = [
-                'nombre' => $this->request->getPost('nombre'),
-                'Código' => $this->request->getPost('Código'),
-                'descripcion' => $this->request->getPost('descripcion'),
-                'cantidad' => $this->request->getPost('cantidad')
-             ];
-            $proyecto->save($data);
-     
-            return redirect()->to(base_url('bodega'))->with('msg','Producto Guardado.');
-                
-            }
 
             public function editar($id=null){
                 print_r($id);
                 $producto= new producto_bodega();
-                $data['producto']=$producto->where('id_producto', $id)->first();
-        
-                return view('editar_producto', $data);
+                $dato = $producto->getProducto($id);
+                $dato['producto']=$producto->where('id_producto', $id)->first();
+
+                return view('editar_producto', compact('dato'));
+            }
+            public function actualizar(){
+                $datos = [
+                    "nombre_producto" => $_POST['nombre_producto'],
+                    "codigo" => $_POST['descripcion'],
+                    "descripcion" => $_POST['descripcion'],
+                    "cantidad" => $_POST['cantidad'],
+                    "nombre_categorias" => $_POST['nombre_categorias'],
+                ];
+                $id_producto = $_POST['id_producto'];
+                $crud = new producto_bodega();
+                $respuesta = $crud->actualizar($datos,$id_producto);
+                if($respuesta){
+                    return redirect()->to(base_url().'/bodega')->with('mensaje','2');
+                }else{
+                    return redirect()->to(base_url().'/bodega')->with('mensaje','3');
+                }
+            }
+            public function editarusuario($id=null){
+                $model = new Usuarios();
+                $dato = $model->getusuario($id);
+
+                echo view('/editar_usuario', compact('dato'));
+            }
+    //    public function actualizarusuario(){
+      //           $usuario= new Usuarios();
+       //          $data=[
+        //             'usuario'=>$this->request->getVar('usuario'),
+        //             'password'=>$this->request->getVar('password'),
+        //             'tipo_usuario'=>$this->request->getVar('tipo_usuario')
+        //         ];
+          //       $id_usuario= $this->request->getVar('id_usuario');
+          //       $usuario->update($id_usuario,$data);
+// 
+           //      return $this->response->redirect(site_url('visualizar_usuarios'));
+            //     } 
+
+        public function actualizarusuario(){
+           $datos = [
+            "usuario" => $_POST['usuario'],
+            "password" => $_POST['password'], 
+            "tipo_usuario" => $_POST['tipo_usuario']
+           ];
+             $id_usuario = $_POST['id_usuario'];
+              $crud = new Usuarios();
+              $respuesta = $crud->actualizaruser($datos,$id_usuario);
+              if($respuesta){
+                  return redirect()->to(base_url().'/visualizar_usuarios')->with('mensaje','2');
+              }else{
+                 return redirect()->to(base_url().'/visualizar_usuarios')->with('mensaje','3');
+               }
             }
 
-    
+
+           
 }
 

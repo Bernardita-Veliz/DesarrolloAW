@@ -1,5 +1,7 @@
 <?= $this->include('templates/header');?>
 print_r($producto);
+
+
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
@@ -28,13 +30,15 @@ print_r($producto);
 
 </div>
            
-                <div class="shadow-lg p-3 mb-5 mt-4 bg-body rounded">                                    
-                    <div class="p-3 mb-2 bg-secondary bg-gradient fw-bold text-center">AGREGAR PRODUCTOS</div>
-                    <form class="row g-3 needs-validation" action="<?php site_url('/actualizar') ?>" enctype="multipart/form-data" method="POST" novalidate>
-                    <input type="text" name="id_producto" value="<?php $producto->id_producto ?>">    
+                <div class="shadow-lg p-3 mb-5 mt-4 bg-body rounded">   
+                                              
+                    <div class="p-3 mb-2 bg-secondary bg-gradient fw-bold text-center">EDITAR PRODUCTOS</div>
+                    
+                    <form class="row g-3 needs-validation" action="<?php site_url('Home/update') ?>" enctype="multipart/form-data" method="POST" novalidate>
+                    <input type="hidden" name="id_producto" value="<?=$dato['id_producto']?>">  
                     <div class="col-md-8 position-relative">
-                            <label for="" class="form-label">Nombre Producto</label>
-                            <input type="text" class="form-control" name="nombre_producto" id="nombre_producto" placeholder="ingrese nombre del producto" id="" required>
+                            <label for="nombre" class="form-label">Nombre Producto</label>
+                            <input type="text" class="form-control" id="nombre_producto" value="<?=$dato['nombre_producto']?>" name="nombre_producto" required>
                            
                             <div class="valid-tooltip">¡Pecfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
@@ -42,7 +46,7 @@ print_r($producto);
 
                         <div class="col-md-3 position-relative">
                             <label for="Código" class="form-label">Código</label>
-                            <input type="number" class="form-control" id="codigo" name="codigo"placeholder="ingrese el código del producto" id=""  required>
+                            <input type="number" class="form-control" id="codigo" value="<?=$dato['codigo']?>" name="codigo" id=""  required>
                           
                             <div class="valid-tooltip">¡Pecfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
@@ -50,14 +54,14 @@ print_r($producto);
 
                         <div class="col-md-8 position-relative">
                             <label for="" class="form-label">Descripción</label>
-                            <input type="text" class="form-control" id="descripcion" name="descripcion"placeholder="ingrese una descripción del producto" id=""  required>
+                            <input type="text" class="form-control" id="descripcion" value="<?=$dato['descripcion']?>" name="descripcion"placeholder="ingrese una descripción del producto" id=""  required>
                           
                             <div class="valid-tooltip">¡Pecfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div>                                             
                         <div class="col-md-3 position-relative">
                             <label for="" class="form-label">Cantidad</label>
-                            <input type="number" min="0" name="cantidad" id="cantidad" class="form-control" placeholder="ingrese cantidad del producto" id="" required>
+                            <input type="number" min="0" name="cantidad" id="cantidad"  value="<?=$dato['cantidad']?>" class="form-control" placeholder="ingrese cantidad del producto" id="" required>
 
                             
                             <div class="valid-tooltip">¡Pecfecto!</div>
@@ -67,7 +71,7 @@ print_r($producto);
                         <p>Categorias</p>
                         
                             <select class="form-select" id="nombre_categorias" name="nombre_categorias" required>
-                                <option selected disabled value="">Seleccionar...</option>
+                                <option selected disabled value="<?=$dato['nombre_categorias']?>">Seleccionar...</option>
                                 <option>Herramientas Inalámbricas</option>
                                 <option>Herramientas Manuales</option>
                                 <option>Accesorios Herramientas</option>
@@ -85,6 +89,7 @@ print_r($producto);
                             </div>
                         </div>  
                     </form>  
+                    
                 </div>
             </div>      
         </div>

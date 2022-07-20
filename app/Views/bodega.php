@@ -20,17 +20,21 @@
   role="navigation"
 >
 
-  <div class="text-center">
-    <h3 class="py-4"><i class="fa-solid fa-screwdriver-wrench"></i></h3>
-    <hr class="m-0" />
-  </div>
-  <div class="text-center" style="min-height: 3rem;">
-    <hr class="mt-0 mb-2" />
-        
-      
-  </div>
+
+
 </div>
-<div class="dataTables_length" id="dataTable_length"><label>Mostrar <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> registros</label></div>
+<form id="buscar" method="GET" action="<?php base_url()?>index.php/buscar">
+<input type="text" id="query"/>
+<input type="submit" id="buscar" value="Buscar">
+</form>
+
+<div class="dataTables_length" id="dataTable_length"><label>Mostrar <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+  <option value="10">10</option>
+  <option value="25">25</option>
+  <option value="50">50</option>
+  <option value="100">100</option>
+  
+</select>registros</label></div>
 
      
       <table class="table table-bordered table-striped table-sm display" id="dataTable" width="100%" cellspacing="0">       
@@ -52,10 +56,10 @@
           <th><?php echo $key->descripcion ?></th>
           <th><?php echo $key->cantidad ?></th>
           <th><?php echo $key->nombre_categorias ?></th>
-          <th>          <th><a href="<?php echo base_url();?>home/editar?id=<?php echo $key->id_producto ?>" class="btn btn-warning">EDITAR</a></th></th>
-          <td>
-          <a href="<?php echo base_url('/editar_producto');?>home/editar?id=<?= $key->id_producto;?>" type="button" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
-          </td>
+          <th>
+          <th>
+          <a href="<?=base_url('Home/editar/'.$key->id_producto)?>" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
+
           <td>
             <a href="<?= base_url() ?>/eliminar/<?= $key->id_producto;?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
           </td>

@@ -34,7 +34,7 @@
                             <label for="" class="form-label">Nombre Producto</label>
                             <input type="text" class="form-control" name="nombre_producto" id="nombre_producto" placeholder="ingrese nombre del producto" id="" required>
                            
-                            <div class="valid-tooltip">¡Pecfecto!</div>
+                            <div class="valid-tooltip">¡Perfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div>
 
@@ -42,7 +42,7 @@
                             <label for="Código" class="form-label">Código</label>
                             <input type="number" class="form-control" id="codigo" name="codigo"placeholder="ingrese el código del producto" id=""  required>
                           
-                            <div class="valid-tooltip">¡Pecfecto!</div>
+                            <div class="valid-tooltip">¡Perfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div>  
 
@@ -50,7 +50,7 @@
                             <label for="" class="form-label">Descripción</label>
                             <input type="text" class="form-control" id="descripcion" name="descripcion"placeholder="ingrese una descripción del producto" id=""  required>
                           
-                            <div class="valid-tooltip">¡Pecfecto!</div>
+                            <div class="valid-tooltip">¡Perfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div>                                             
                         <div class="col-md-3 position-relative">
@@ -58,7 +58,7 @@
                             <input type="number" min="0" name="cantidad" id="cantidad" class="form-control" placeholder="ingrese cantidad del producto" id="" required>
 
                             
-                            <div class="valid-tooltip">¡Pecfecto!</div>
+                            <div class="valid-tooltip">¡Perfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div> 
                         <div class="col-md-3 position-relative">

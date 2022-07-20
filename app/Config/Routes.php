@@ -50,20 +50,29 @@ $routes->get('/login', 'Home::login');
 $routes->get('/login', 'Home_usuario::login_usuario');
 $routes->get('/categorias', 'Home::categorias');
 $routes->get('/salir', 'Home::salir');
+$routes->get('/materiales', 'Home::materiales');
 $routes->get('/editar_producto', 'Home::editar_producto');
 $routes->get('/eliminar/(:num)', 'Home::eliminar/$1');
 $routes->get('/agregar_proyecto', 'Home::agregar_proyecto');
 $routes->get('editar_producto/(:num)', 'Home::editar/$1');
 $routes->get('/eliminar_usuarios/(:num)', 'Home::eliminar_usuarios/$1');
 
-$routes->get('editar_producto/(:num)', 'Home::editar/$1');
-$routes->get('/editar_usuario(num)', 'Home::edit/1');
+
+
+$routes->get('Home/editar/(:num)','Home::editar/$1');
+$routes->post('Home/editar/(:num)','Home::actualizar/$1');
+
+$routes->get('Home/editarusuario/(:num)','Home::editarusuario/$1');
+$routes->post('Home/editarusuario/(:num)','Home::actualizarusuario/$1');
+
+$routes->post('/agregar_proyecto', 'Home::agregar_proyecto');
+$routes->get('buscar','Home::buscar');
 
 // $routes->get('/editar_producto/(:num)', 'Home::editar/$1');
 
 $routes->get('/herramientas_inalambricas', 'Home::herramientas_inalambricas');
 
-
+$routes->post('/bodega', 'Home::actualizar');
 $routes->post('/crear_usuario', 'Home::guardar_usuario');
 $routes->post('visualizar_usuario', 'Home::crear_usuario');
 $routes->post('visualizar_usuario', 'Home::guardar_usuario');
@@ -71,7 +80,10 @@ $routes->post('bodega', 'Home::guardar_producto');
 $routes->post('proyectos', 'Home::proyectos');
 $routes->post('/login', 'Home::login');
 $routes->post('/login', 'Home_usuario::login_usuario');
+
 $routes->post('/agregar_producto', 'Home::store');
+
+$routes->post('/agregar_proyecto', 'Home::store2');
 
 
 

@@ -20,16 +20,16 @@ class TablaProyectos extends Migration
                 'constraint'       => '255',
             ],
             'codigo'          =>[
-                'type'             =>'VARCHAR',
-                'constraint'       => '255',
+                'type'             =>'INT',
+                'constraint'       => 5,
             ],
             'descripcion'           =>[
-                'type'             => 'INT',
-                'constraint'       => 5,
+                'type'             => 'VARCHAR',
+                'constraint'       => '255',
             ],
-            'id_material'           =>[
-                'type'             => 'INT',
-                'constraint'       => 5,
+            'nombre_material'      =>[
+                'type'             => 'VARCHAR',
+                'constraint'       => '255',
             ],
             'fecha_inicio'           =>[
                 'type'             => 'DATETIME',

@@ -15,7 +15,7 @@
                             <label for="nombre" class="form-label">Nombre Usuario</label>
                             <input type="text" class="form-control" id="" name="usuario" placeholder="ingrese nombre de usuario" required>
                            
-                            <div class="valid-tooltip">¡Pecfecto!</div>
+                            <div class="valid-tooltip">¡Perfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div>
 
@@ -24,7 +24,7 @@
                             <label for="apellido" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="" name="password" placeholder="ingrese una contraseña" id="password"  required>
                           
-                            <div class="valid-tooltip">¡Pecfecto!</div>
+                            <div class="valid-tooltip">¡Perfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div>                                             
                         <div class="col-md-3 position-relative">
@@ -36,7 +36,7 @@
                                 <option>Usuario</option>
                             </select>
                             
-                            <div class="valid-tooltip">¡Pecfecto!</div>
+                            <div class="valid-tooltip">¡Perfecto!</div>
                             <div class="invalid-tooltip">¡Ups! ¡Cuidado! Complete correctamente</div>
                         </div>                   
                         <div class="row col-12 text-center">

@@ -22,7 +22,7 @@
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Buscar" aria-label="Search" aria-describedby="basic-addon2" />
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-info" type="button"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>
@@ -85,9 +85,10 @@
                               <div class="dropdown p-3">
                                 <p class="mt-4">Bodega Proyecto</p>
                                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Poyectos
+                                  Proyectos
                                 </button>
                                 <div class="dropdown-menu bg-secondary" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="<?php echo base_url('/materiales'); ?>"> Ver Materiales</a>
                                   <a class="dropdown-item" href="<?php echo base_url('/proyectos'); ?>"> Ver Proyectos</a>
                                   <a class="dropdown-item" href="<?php echo base_url('/agregar_proyecto'); ?>">Agregar Proyectos</a>
                                 </div>

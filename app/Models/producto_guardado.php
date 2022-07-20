@@ -13,5 +13,8 @@ class producto_guardado extends Model
         'cantidad',
         'nombre_categorias',
     ];
+    public function add($dato){
+        return $this->save($dato);
+    }
 }
 ?>

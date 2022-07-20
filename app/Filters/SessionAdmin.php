@@ -8,7 +8,7 @@ use CodeIgniter\HTTP\RequestInterface as HTTPRequestInterface;
 class SessionAdmin implements FilterInterface{
     public function before(HTTPRequestInterface $request, $arguments = null)
     {
-     if(!session('id_tipo_usuario') == 'admin'){
+     if(!session('tipo_usuario') == 'administrador'){
         return redirect()->to(base_url('/'));
      }   
     }

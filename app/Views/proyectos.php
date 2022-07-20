@@ -2,7 +2,7 @@
 <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Tabla proyectos</h1>
+                        <h1 class="mt-4">Tabla Bodega Proyectos</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html"></a></li>
                             <li class="breadcrumb-item active"></li>
@@ -34,7 +34,7 @@
 
      
       <table class="table table-bordered table-striped table-sm display " id="dataTable" width="100%" cellspacing="0">       
-        <h4 class="p-3 bg-secondary bg-gradient fw-bold text-center"> PRODUCTOS EN BODEGA</h4>
+        <h4 class="p-3 bg-secondary bg-gradient fw-bold text-center"> Tabla Proyectos</h4>
         <tr>
           <th>ID</th>
           <th>NOMBRE PROYECTO</th>
@@ -47,13 +47,13 @@
         </tr>
          
           <tr>
-          <th> </th>
-          <th> </th>
-          <th> </th>
-          <th> </th>
-          <th> </th>
-          <th> </th>
-          <th> </th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+
           <td>
           <a href="<?php echo base_url('/editar_producto')?>" type="button" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a>
           </td>

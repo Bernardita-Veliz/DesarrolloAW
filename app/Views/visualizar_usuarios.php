@@ -42,8 +42,8 @@
           <th>ID_USUARIO</th>
           <th>NOMBRE USUARIO</th>
           <th>TIPO DE USUARIO</th>
-          <th>EDITAR</th>
-          <th>ELIMINAR</th>
+          <th></th>
+          <th></th>
 
         </tr>
         <?php foreach($datosusuario as $key): ?>
@@ -52,7 +52,7 @@
           <th><?php echo $key->usuario?></th>
           <th><?php echo $key->tipo_usuario?></th>
 
-          <th><a  href="<?= base_url() ?>/edit/<?= $key->id_usuario;?>" type="button" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a></th>
+          <th><a  href="<?=base_url('Home/editarusuario/'.$key->id_usuario)?>" type="button" class="btn btn-info"><i class="fas fa-pencil-alt"></i></a></th>
           <th><a  href="<?= base_url() ?>/eliminar_usuarios/<?= $key->id_usuario;?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a></th>
 
         </tr>
